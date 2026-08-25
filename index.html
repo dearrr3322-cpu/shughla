@@ -1,526 +1,227 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>شوف غلا - وظائف وأرباح</title>
+<meta name="description" content="شوف غلا - منصة عربية للعمل والفرص الرقمية والمحتوى المفيد.">
+<title>شوف غلا - وظائف وفرص رقمية</title>
+
+<!--
+  GOOGLE ADSENSE:
+  بعد قبول الموقع في AdSense، ضع كود AdSense الذي تعطيك إياه Google هنا.
+  لا تضع أي مفتاح سري أو كود شام كاش هنا.
+-->
 
 <style>
 *{box-sizing:border-box}
-
 body{
-    margin:0;
-    font-family:Arial,Tahoma,sans-serif;
-    background:#f4f6fa;
-    color:#172033;
+  margin:0;
+  font-family:Arial,Tahoma,sans-serif;
+  background:#f4f6fa;
+  color:#172033;
+  line-height:1.7;
 }
-
 .header{
-    background:#111827;
-    color:white;
-    padding:28px 20px;
-    border-radius:0 0 35px 35px;
+  background:#111827;
+  color:#fff;
+  padding:32px 20px;
+  border-radius:0 0 35px 35px;
 }
-
-.header h1{
-    margin:0;
-    font-size:32px;
-}
-
-.header p{
-    margin:10px 0 0;
-    color:#cbd5e1;
-    font-size:18px;
-}
-
-.container{
-    max-width:650px;
-    margin:auto;
-    padding:20px;
-}
-
-.balance{
-    background:white;
-    border-radius:25px;
-    padding:25px;
-    margin-top:25px;
-    box-shadow:0 5px 20px #00000012;
-}
-
-.balance-title{
-    font-size:20px;
-    color:#64748b;
-}
-
-.money{
-    font-size:42px;
-    font-weight:bold;
-    margin:8px 0 20px;
-}
-
-.withdraw{
-    width:100%;
-    border:0;
-    background:#16a34a;
-    color:white;
-    padding:17px;
-    border-radius:15px;
-    font-size:20px;
-    font-weight:bold;
-}
-
-h2{
-    margin-top:30px;
-}
-
-.tasks{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:15px;
-}
-
+.header h1{margin:0;font-size:34px}
+.header p{margin:8px 0 0;color:#cbd5e1;font-size:18px}
+.container{max-width:700px;margin:auto;padding:20px}
 .card{
-    background:white;
-    border-radius:22px;
-    padding:20px;
-    box-shadow:0 5px 20px #00000010;
+  background:#fff;
+  border-radius:22px;
+  padding:22px;
+  margin-top:20px;
+  box-shadow:0 5px 20px #00000010;
 }
-
-.card h3{
-    margin-top:0;
-    font-size:21px;
+.ad-box{
+  min-height:100px;
+  border:1px dashed #94a3b8;
+  border-radius:16px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  color:#64748b;
+  background:#f8fafc;
+  margin-top:20px;
+  padding:15px;
 }
-
-.card p{
-    color:#64748b;
-    min-height:45px;
-}
-
-.start{
-    width:100%;
-    border:0;
-    background:#16a34a;
-    color:white;
-    padding:14px;
-    border-radius:13px;
-    font-size:17px;
-    font-weight:bold;
-}
-
-.start:disabled{
-    background:#94a3b8;
-}
-
 .notice{
-    background:#fff7ed;
-    border:1px solid #fed7aa;
-    padding:15px;
-    border-radius:15px;
-    margin-top:20px;
-    color:#9a3412;
+  background:#eff6ff;
+  border:1px solid #bfdbfe;
+  color:#1e40af;
+  padding:16px;
+  border-radius:16px;
+  margin-top:20px;
 }
-
-.history{
-    background:white;
-    border-radius:20px;
-    padding:20px;
-    margin-top:20px;
+.warning{
+  background:#fff7ed;
+  border:1px solid #fed7aa;
+  color:#9a3412;
+  padding:16px;
+  border-radius:16px;
+  margin-top:20px;
 }
-
-.history-item{
-    border-bottom:1px solid #e5e7eb;
-    padding:12px 0;
+.opportunities{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.opportunity{
+  background:#fff;
+  border-radius:20px;
+  padding:18px;
+  box-shadow:0 5px 20px #00000010;
 }
-
-.modal{
-    display:none;
-    position:fixed;
-    inset:0;
-    background:#00000080;
-    z-index:10;
-    align-items:center;
-    justify-content:center;
-    padding:20px;
+.opportunity h3{margin:0 0 7px}
+.opportunity p{color:#64748b;margin:0}
+.btn{
+  display:block;
+  width:100%;
+  margin-top:15px;
+  padding:13px;
+  border:0;
+  border-radius:12px;
+  background:#16a34a;
+  color:#fff;
+  text-align:center;
+  text-decoration:none;
+  font-size:17px;
+  font-weight:bold;
 }
-
-.modal-box{
-    background:white;
-    width:100%;
-    max-width:500px;
-    border-radius:25px;
-    padding:25px;
+.btn.disabled{
+  background:#94a3b8;
+  cursor:not-allowed;
 }
-
-.modal-box input,
-.modal-box select{
-    width:100%;
-    padding:15px;
-    margin:8px 0 15px;
-    border:1px solid #cbd5e1;
-    border-radius:12px;
-    font-size:17px;
+.balance{
+  text-align:center;
 }
-
-.confirm{
-    width:100%;
-    background:#16a34a;
-    color:white;
-    border:0;
-    padding:15px;
-    border-radius:12px;
-    font-size:18px;
-    font-weight:bold;
+.balance .amount{
+  font-size:38px;
+  font-weight:bold;
+  margin:5px 0;
 }
-
-.close{
-    width:100%;
-    margin-top:10px;
-    background:#e5e7eb;
-    border:0;
-    padding:13px;
-    border-radius:12px;
-    font-size:17px;
+.small{color:#64748b;font-size:14px}
+.footer{
+  text-align:center;
+  color:#64748b;
+  padding:30px 20px;
 }
-
-.bottom{
-    margin-top:30px;
-    background:white;
-    padding:20px;
-    text-align:center;
-    color:#64748b;
+@media(max-width:560px){
+  .opportunities{grid-template-columns:1fr}
 }
 </style>
 </head>
 
 <body>
 
-<div class="header">
+<header class="header">
+  <div class="container">
     <h1>💼 شوف غلا</h1>
-    <p>وظائف • عمل • ربح</p>
-</div>
+    <p>وظائف • فرص رقمية • محتوى مفيد</p>
+  </div>
+</header>
 
-<div class="container">
+<main class="container">
 
-    <div class="balance">
-        <div class="balance-title">رصيدك الحالي</div>
-        <div class="money" id="balance">$0.00</div>
-
-        <button class="withdraw" onclick="openWithdraw()">
-            سحب الأرباح
-        </button>
+  <section class="card balance">
+    <div class="small">حساب الأرباح</div>
+    <div class="amount">$0.00</div>
+    <div class="small">
+      الأرباح الحقيقية لا تُحتسب داخل المتصفح. سيتم عرضها هنا فقط بعد ربط
+      الموقع بخدمة دفع/أرباح حقيقية.
     </div>
-
-    <h2>الفرص المتاحة</h2>
-
-    <div class="tasks">
-
-        <div class="card">
-            <h3>📺 مشاهدة محتوى</h3>
-            <p>مهمة بسيطة من الهاتف</p>
-            <button class="start"
-                    onclick="completeTask(this,0.10,'مشاهدة محتوى')">
-                ابدأ $0.10
-            </button>
-        </div>
-
-        <div class="card">
-            <h3>📝 استبيان</h3>
-            <p>شارك برأيك واربح</p>
-            <button class="start"
-                    onclick="completeTask(this,0.25,'استبيان')">
-                ابدأ $0.25
-            </button>
-        </div>
-
-        <div class="card">
-            <h3>👥 إحالة صديق</h3>
-            <p>شارك رابطك مع أصدقائك</p>
-            <button class="start"
-                    onclick="alert('سنضيف نظام الإحالات الحقيقي لاحقاً')">
-                ابدأ
-            </button>
-        </div>
-
-        <div class="card">
-            <h3>⭐ مهمة صغيرة</h3>
-            <p>أنجز مهمة بسيطة واربح</p>
-            <button class="start"
-                    onclick="completeTask(this,0.05,'مهمة صغيرة')">
-                ابدأ $0.05
-            </button>
-        </div>
-
-    </div>
-
-    <div class="notice">
-        ⚠️ الرصيد الظاهر في هذا الإصدار محفوظ على جهازك فقط.
-        لكي تصبح الأرباح حقيقية ويمكن للمستخدمين السحب فعلياً،
-        سنحتاج إلى قاعدة بيانات وخادم وربط دفع آمن.
-    </div>
-
-    <div class="history">
-        <h3>📋 سجل العمليات</h3>
-        <div id="history">
-            لا توجد عمليات حتى الآن.
-        </div>
-    </div>
-
-</div>
-
-<div class="bottom">
-    شوف غلا © 2026
-</div>
-
-
-<!-- نافذة السحب -->
-
-<div class="modal" id="withdrawModal">
-
-    <div class="modal-box">
-
-        <h2>💰 سحب الأرباح</h2>
-
-        <p>
-            اختر طريقة السحب وأدخل بيانات محفظتك.
-        </p>
-
-        <label>طريقة السحب</label>
-
-        <select id="method">
-            <option value="Sham Cash">شام كاش</option>
-        </select>
-
-        <label>رقم / معرّف محفظة شام كاش</label>
-
-        <input
-            id="wallet"
-            type="text"
-            placeholder="أدخل رقم أو معرف شام كاش">
-
-        <label>المبلغ بالدولار</label>
-
-        <input
-            id="amount"
-            type="number"
-            min="1"
-            step="0.01"
-            placeholder="مثلاً 1">
-
-        <button class="confirm" onclick="requestWithdraw()">
-            إرسال طلب السحب
-        </button>
-
-        <button class="close" onclick="closeWithdraw()">
-            إلغاء
-        </button>
-
-    </div>
-
-</div>
-
-
-<script>
-
-let balance = Number(localStorage.getItem("balance") || 0);
-
-let history =
-    JSON.parse(localStorage.getItem("history") || "[]");
-
-function save(){
-
-    localStorage.setItem(
-        "balance",
-        balance.toFixed(2)
-    );
-
-    localStorage.setItem(
-        "history",
-        JSON.stringify(history)
-    );
-
-    updateBalance();
-    showHistory();
-}
-
-function updateBalance(){
-
-    document.getElementById("balance").textContent =
-        "$" + balance.toFixed(2);
-}
-
-function completeTask(button, amount, name){
-
-    button.disabled = true;
-    button.textContent = "جاري التنفيذ...";
-
-    setTimeout(function(){
-
-        balance += amount;
-
-        history.unshift({
-            type:"ربح",
-            name:name,
-            amount:amount,
-            date:new Date().toLocaleString("ar")
-        });
-
-        save();
-
-        button.textContent =
-            "تمت المهمة ✓ +" + amount.toFixed(2) + "$";
-
-        alert(
-            "مبروك 🎉\n" +
-            "أضفنا $" +
-            amount.toFixed(2) +
-            " إلى رصيدك."
-        );
-
-    },1500);
-}
-
-function openWithdraw(){
-
-    if(balance < 1){
-
-        alert(
-            "رصيدك الحالي $" +
-            balance.toFixed(2) +
-            "\nالحد الأدنى للسحب هو $1.00"
-        );
-
-        return;
-    }
-
-    document.getElementById("withdrawModal").style.display =
-        "flex";
-
-    document.getElementById("amount").value =
-        balance.toFixed(2);
-}
-
-function closeWithdraw(){
-
-    document.getElementById("withdrawModal").style.display =
-        "none";
-}
-
-function requestWithdraw(){
-
-    let wallet =
-        document.getElementById("wallet").value.trim();
-
-    let amount =
-        Number(document.getElementById("amount").value);
-
-    if(!wallet){
-
-        alert("أدخل رقم أو معرف شام كاش.");
-        return;
-    }
-
-    if(!amount || amount <= 0){
-
-        alert("أدخل مبلغاً صحيحاً.");
-        return;
-    }
-
-    if(amount > balance){
-
-        alert("المبلغ أكبر من رصيدك.");
-        return;
-    }
-
-    if(amount < 1){
-
-        alert("الحد الأدنى للسحب هو $1.00.");
-        return;
-    }
-
-    history.unshift({
-
-        type:"سحب",
-
-        name:"شام كاش",
-
-        amount:amount,
-
-        wallet:wallet,
-
-        status:"قيد المراجعة",
-
-        date:new Date().toLocaleString("ar")
-
-    });
-
-    /*
-      لا نخصم الرصيد نهائياً هنا.
-      الطلب أصبح "قيد المراجعة".
-      عند بناء الخادم الحقيقي سنخصم الرصيد
-      بعد قبول الطلب وتنفيذ التحويل.
-    */
-
-    save();
-
-    closeWithdraw();
-
-    alert(
-        "تم إرسال طلب السحب بنجاح ✅\n\n" +
-        "الطريقة: شام كاش\n" +
-        "المبلغ: $" + amount.toFixed(2) + "\n" +
-        "الحالة: قيد المراجعة"
-    );
-}
-
-function showHistory(){
-
-    let box =
-        document.getElementById("history");
-
-    if(history.length === 0){
-
-        box.innerHTML =
-            "لا توجد عمليات حتى الآن.";
-
-        return;
-    }
-
-    box.innerHTML =
-        history.map(function(item){
-
-            if(item.type === "ربح"){
-
-                return `
-                <div class="history-item">
-                    🟢 ${item.name}
-                    <br>
-                    <b>+$${Number(item.amount).toFixed(2)}</b>
-                    <br>
-                    <small>${item.date}</small>
-                </div>
-                `;
-
-            }
-
-            return `
-            <div class="history-item">
-                🟠 طلب سحب - ${item.name}
-                <br>
-                <b>-$${Number(item.amount).toFixed(2)}</b>
-                <br>
-                الحالة: ${item.status}
-                <br>
-                <small>${item.date}</small>
-            </div>
-            `;
-
-        }).join("");
-}
-
-updateBalance();
-showHistory();
-
-</script>
+  </section>
+
+  <!-- مكان إعلان حقيقي بعد قبول الموقع في AdSense -->
+  <section class="ad-box" aria-label="مساحة إعلانية">
+    مساحة إعلانية — سيتم تفعيلها بعد قبول الموقع في شبكة إعلانية.
+  </section>
+
+  <section class="card">
+    <h2>🚀 فرص العمل</h2>
+    <p>
+      نعمل على إضافة فرص رقمية حقيقية ومصادر دخل موثوقة.
+      لا ندّعي وجود أرباح أو مهام مدفوعة قبل توفر الجهة التي تدفع فعليًا.
+    </p>
+  </section>
+
+  <section class="opportunities">
+
+    <article class="opportunity">
+      <h3>📚 تعلّم مهارة</h3>
+      <p>محتوى يساعدك على تطوير مهارات رقمية يمكن استخدامها للعمل.</p>
+      <a class="btn" href="#content">ابدأ التعلّم</a>
+    </article>
+
+    <article class="opportunity">
+      <h3>💻 فرص رقمية</h3>
+      <p>سنضيف هنا فرصًا حقيقية بعد التحقق من جهة الدفع وشروطها.</p>
+      <button class="btn disabled" disabled>قريبًا</button>
+    </article>
+
+    <article class="opportunity">
+      <h3>🤝 إحالة</h3>
+      <p>نظام الإحالات سيُفعّل فقط بعد ربطه ببرنامج إحالة حقيقي.</p>
+      <button class="btn disabled" disabled>قريبًا</button>
+    </article>
+
+    <article class="opportunity">
+      <h3>📰 محتوى مفيد</h3>
+      <p>مقالات ونصائح عن العمل الحر والمهارات الرقمية.</p>
+      <a class="btn" href="#content">شاهد المحتوى</a>
+    </article>
+
+  </section>
+
+  <section class="ad-box" aria-label="مساحة إعلانية ثانية">
+    مساحة إعلانية ثانية — لا تضغط على الإعلانات أو تطلب من الآخرين الضغط عليها.
+  </section>
+
+  <section class="card" id="content">
+    <h2>💡 كيف سيحقق الموقع دخلًا حقيقيًا؟</h2>
+    <p>
+      يمكن تحقيق دخل الموقع من الإعلانات أو الخدمات أو برامج الإحالة
+      عندما يتم قبول الموقع في جهة دفع حقيقية وتتحقق شروطها.
+    </p>
+    <p>
+      <strong>مهم:</strong> مشاهدة الإعلانات أو الضغط عليها لن يعطي المستخدم
+      رصيدًا داخل الموقع. أي نظام دفع للمستخدمين يحتاج إلى جهة دفع حقيقية
+      وخادم وقاعدة بيانات وآلية تحقق.
+    </p>
+  </section>
+
+  <section class="notice">
+    <strong>🔐 حماية المستخدم:</strong>
+    لا نطلب كلمة مرور شام كاش أو رمز SMS أو مفتاح سري داخل الموقع.
+    لا تضع أي بيانات سرية في ملف HTML.
+  </section>
+
+  <section class="warning">
+    <strong>⚠️ السحب:</strong>
+    ميزة السحب إلى شام كاش غير مفعّلة حاليًا حتى يتم إنشاء نظام خادم
+    حقيقي والتحقق من طريقة الدفع الرسمية. لن يتم عرض طلب سحب وهمي.
+  </section>
+
+  <section class="card">
+    <h2>📄 الخصوصية</h2>
+    <p>
+      هذا الموقع لا يطلب حاليًا كلمات مرور أو رموز تحقق أو مفاتيح مالية.
+      عند إضافة خدمات خارجية، سيتم توضيح استخدامها في سياسة الخصوصية.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>📞 تواصل معنا</h2>
+    <p>أضف بريدًا إلكترونيًا رسميًا للموقع هنا قبل تقديمه إلى خدمات الإعلانات.</p>
+  </section>
+
+</main>
+
+<footer class="footer">
+  شوف غلا © 2026
+</footer>
 
 </body>
 </html>
