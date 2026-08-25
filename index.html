@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>شوف غلا</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#f5f7fb;color:#18202a}
+header{background:#111827;color:white;padding:22px 18px;border-radius:0 0 24px 24px}
+h1{margin:0 0 6px;font-size:30px}.sub{opacity:.8}
+main{padding:18px;max-width:600px;margin:auto}
+.balance{background:white;border-radius:18px;padding:18px;margin:16px 0;box-shadow:0 4px 16px #00000010}
+.balance b{font-size:28px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.card{background:white;border-radius:16px;padding:16px;box-shadow:0 4px 14px #0000000d}
+.card h3{margin:0 0 8px}.card p{margin:0;color:#667085;font-size:14px}
+button{width:100%;border:0;border-radius:12px;padding:13px;font-size:16px;font-weight:bold;background:#16a34a;color:white;margin-top:12px}
+.job{margin-top:12px}
+.job small{color:#667085}
+nav{position:fixed;bottom:0;left:0;right:0;background:white;border-top:1px solid #ddd;padding:10px;display:flex;justify-content:space-around}
+nav button{margin:0;width:auto;background:transparent;color:#344054;padding:8px}
+</style>
+</head>
+<body>
+<header>
+<h1>شوف غلا 💼</h1>
+<div class="sub">وظائف • عمل • ربح</div>
+</header>
+<main>
+<section class="balance">
+<div>رصيدك الحالي</div>
+<b id="balance">$0.00</b>
+<button onclick="alert('سيتم تفعيل السحب بعد إضافة نظام الحسابات والدفع.')">سحب الأرباح</button>
+</section>
+
+<h2>الفرص المتاحة</h2>
+<div class="grid">
+<div class="card"><h3>مشاهدة محتوى</h3><p>مهام بسيطة من الهاتف</p><button onclick="earn(0.10)">ابدأ +$0.10</button></div>
+<div class="card"><h3>استبيان</h3><p>شارك برأيك واربح</p><button onclick="earn(0.25)">ابدأ +$0.25</button></div>
+<div class="card"><h3>مهمة صغيرة</h3><p>إنجاز مهام قصيرة</p><button onclick="earn(0.50)">ابدأ +$0.50</button></div>
+<div class="card"><h3>إحالة صديق</h3><p>اربح عند دعوة مستخدم</p><button onclick="alert('رابط الإحالة سيظهر بعد تسجيل الحساب.')">دعوة</button></div>
+</div>
+
+<div class="card job">
+<h3>📢 قريباً</h3>
+<p>سنضيف تسجيل الحساب، الوظائف الحقيقية، المحفظة، والسحب الإلكتروني.</p>
+</div>
+</main>
+<nav><button onclick="location.reload()">الرئيسية</button><button onclick="alert('سجل الأرباح سيضاف قريباً')">الأرباح</button><button onclick="alert('تسجيل الدخول سيضاف قريباً')">حسابي</button></nav>
+
+<script>
+let balance=0;
+function earn(amount){
+ balance+=amount;
+ document.getElementById('balance').textContent='$'+balance.toFixed(2);
+ alert('مبروك! تمت إضافة $'+amount.toFixed(2)+' كتجربة.');
+}
+</script>
+</body>
+</html>
