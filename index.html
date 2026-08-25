@@ -1,60 +1,526 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>شوف غلا</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>شوف غلا - وظائف وأرباح</title>
+
 <style>
-*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#f5f7fb;color:#18202a}
-header{background:#111827;color:white;padding:22px 18px;border-radius:0 0 24px 24px}
-h1{margin:0 0 6px;font-size:30px}.sub{opacity:.8}
-main{padding:18px;max-width:600px;margin:auto}
-.balance{background:white;border-radius:18px;padding:18px;margin:16px 0;box-shadow:0 4px 16px #00000010}
-.balance b{font-size:28px}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.card{background:white;border-radius:16px;padding:16px;box-shadow:0 4px 14px #0000000d}
-.card h3{margin:0 0 8px}.card p{margin:0;color:#667085;font-size:14px}
-button{width:100%;border:0;border-radius:12px;padding:13px;font-size:16px;font-weight:bold;background:#16a34a;color:white;margin-top:12px}
-.job{margin-top:12px}
-.job small{color:#667085}
-nav{position:fixed;bottom:0;left:0;right:0;background:white;border-top:1px solid #ddd;padding:10px;display:flex;justify-content:space-around}
-nav button{margin:0;width:auto;background:transparent;color:#344054;padding:8px}
+*{box-sizing:border-box}
+
+body{
+    margin:0;
+    font-family:Arial,Tahoma,sans-serif;
+    background:#f4f6fa;
+    color:#172033;
+}
+
+.header{
+    background:#111827;
+    color:white;
+    padding:28px 20px;
+    border-radius:0 0 35px 35px;
+}
+
+.header h1{
+    margin:0;
+    font-size:32px;
+}
+
+.header p{
+    margin:10px 0 0;
+    color:#cbd5e1;
+    font-size:18px;
+}
+
+.container{
+    max-width:650px;
+    margin:auto;
+    padding:20px;
+}
+
+.balance{
+    background:white;
+    border-radius:25px;
+    padding:25px;
+    margin-top:25px;
+    box-shadow:0 5px 20px #00000012;
+}
+
+.balance-title{
+    font-size:20px;
+    color:#64748b;
+}
+
+.money{
+    font-size:42px;
+    font-weight:bold;
+    margin:8px 0 20px;
+}
+
+.withdraw{
+    width:100%;
+    border:0;
+    background:#16a34a;
+    color:white;
+    padding:17px;
+    border-radius:15px;
+    font-size:20px;
+    font-weight:bold;
+}
+
+h2{
+    margin-top:30px;
+}
+
+.tasks{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+}
+
+.card{
+    background:white;
+    border-radius:22px;
+    padding:20px;
+    box-shadow:0 5px 20px #00000010;
+}
+
+.card h3{
+    margin-top:0;
+    font-size:21px;
+}
+
+.card p{
+    color:#64748b;
+    min-height:45px;
+}
+
+.start{
+    width:100%;
+    border:0;
+    background:#16a34a;
+    color:white;
+    padding:14px;
+    border-radius:13px;
+    font-size:17px;
+    font-weight:bold;
+}
+
+.start:disabled{
+    background:#94a3b8;
+}
+
+.notice{
+    background:#fff7ed;
+    border:1px solid #fed7aa;
+    padding:15px;
+    border-radius:15px;
+    margin-top:20px;
+    color:#9a3412;
+}
+
+.history{
+    background:white;
+    border-radius:20px;
+    padding:20px;
+    margin-top:20px;
+}
+
+.history-item{
+    border-bottom:1px solid #e5e7eb;
+    padding:12px 0;
+}
+
+.modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:#00000080;
+    z-index:10;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+}
+
+.modal-box{
+    background:white;
+    width:100%;
+    max-width:500px;
+    border-radius:25px;
+    padding:25px;
+}
+
+.modal-box input,
+.modal-box select{
+    width:100%;
+    padding:15px;
+    margin:8px 0 15px;
+    border:1px solid #cbd5e1;
+    border-radius:12px;
+    font-size:17px;
+}
+
+.confirm{
+    width:100%;
+    background:#16a34a;
+    color:white;
+    border:0;
+    padding:15px;
+    border-radius:12px;
+    font-size:18px;
+    font-weight:bold;
+}
+
+.close{
+    width:100%;
+    margin-top:10px;
+    background:#e5e7eb;
+    border:0;
+    padding:13px;
+    border-radius:12px;
+    font-size:17px;
+}
+
+.bottom{
+    margin-top:30px;
+    background:white;
+    padding:20px;
+    text-align:center;
+    color:#64748b;
+}
 </style>
 </head>
+
 <body>
-<header>
-<h1>شوف غلا 💼</h1>
-<div class="sub">وظائف • عمل • ربح</div>
-</header>
-<main>
-<section class="balance">
-<div>رصيدك الحالي</div>
-<b id="balance">$0.00</b>
-<button onclick="alert('سيتم تفعيل السحب بعد إضافة نظام الحسابات والدفع.')">سحب الأرباح</button>
-</section>
 
-<h2>الفرص المتاحة</h2>
-<div class="grid">
-<div class="card"><h3>مشاهدة محتوى</h3><p>مهام بسيطة من الهاتف</p><button onclick="earn(0.10)">ابدأ +$0.10</button></div>
-<div class="card"><h3>استبيان</h3><p>شارك برأيك واربح</p><button onclick="earn(0.25)">ابدأ +$0.25</button></div>
-<div class="card"><h3>مهمة صغيرة</h3><p>إنجاز مهام قصيرة</p><button onclick="earn(0.50)">ابدأ +$0.50</button></div>
-<div class="card"><h3>إحالة صديق</h3><p>اربح عند دعوة مستخدم</p><button onclick="alert('رابط الإحالة سيظهر بعد تسجيل الحساب.')">دعوة</button></div>
+<div class="header">
+    <h1>💼 شوف غلا</h1>
+    <p>وظائف • عمل • ربح</p>
 </div>
 
-<div class="card job">
-<h3>📢 قريباً</h3>
-<p>سنضيف تسجيل الحساب، الوظائف الحقيقية، المحفظة، والسحب الإلكتروني.</p>
+<div class="container">
+
+    <div class="balance">
+        <div class="balance-title">رصيدك الحالي</div>
+        <div class="money" id="balance">$0.00</div>
+
+        <button class="withdraw" onclick="openWithdraw()">
+            سحب الأرباح
+        </button>
+    </div>
+
+    <h2>الفرص المتاحة</h2>
+
+    <div class="tasks">
+
+        <div class="card">
+            <h3>📺 مشاهدة محتوى</h3>
+            <p>مهمة بسيطة من الهاتف</p>
+            <button class="start"
+                    onclick="completeTask(this,0.10,'مشاهدة محتوى')">
+                ابدأ $0.10
+            </button>
+        </div>
+
+        <div class="card">
+            <h3>📝 استبيان</h3>
+            <p>شارك برأيك واربح</p>
+            <button class="start"
+                    onclick="completeTask(this,0.25,'استبيان')">
+                ابدأ $0.25
+            </button>
+        </div>
+
+        <div class="card">
+            <h3>👥 إحالة صديق</h3>
+            <p>شارك رابطك مع أصدقائك</p>
+            <button class="start"
+                    onclick="alert('سنضيف نظام الإحالات الحقيقي لاحقاً')">
+                ابدأ
+            </button>
+        </div>
+
+        <div class="card">
+            <h3>⭐ مهمة صغيرة</h3>
+            <p>أنجز مهمة بسيطة واربح</p>
+            <button class="start"
+                    onclick="completeTask(this,0.05,'مهمة صغيرة')">
+                ابدأ $0.05
+            </button>
+        </div>
+
+    </div>
+
+    <div class="notice">
+        ⚠️ الرصيد الظاهر في هذا الإصدار محفوظ على جهازك فقط.
+        لكي تصبح الأرباح حقيقية ويمكن للمستخدمين السحب فعلياً،
+        سنحتاج إلى قاعدة بيانات وخادم وربط دفع آمن.
+    </div>
+
+    <div class="history">
+        <h3>📋 سجل العمليات</h3>
+        <div id="history">
+            لا توجد عمليات حتى الآن.
+        </div>
+    </div>
+
 </div>
-</main>
-<nav><button onclick="location.reload()">الرئيسية</button><button onclick="alert('سجل الأرباح سيضاف قريباً')">الأرباح</button><button onclick="alert('تسجيل الدخول سيضاف قريباً')">حسابي</button></nav>
+
+<div class="bottom">
+    شوف غلا © 2026
+</div>
+
+
+<!-- نافذة السحب -->
+
+<div class="modal" id="withdrawModal">
+
+    <div class="modal-box">
+
+        <h2>💰 سحب الأرباح</h2>
+
+        <p>
+            اختر طريقة السحب وأدخل بيانات محفظتك.
+        </p>
+
+        <label>طريقة السحب</label>
+
+        <select id="method">
+            <option value="Sham Cash">شام كاش</option>
+        </select>
+
+        <label>رقم / معرّف محفظة شام كاش</label>
+
+        <input
+            id="wallet"
+            type="text"
+            placeholder="أدخل رقم أو معرف شام كاش">
+
+        <label>المبلغ بالدولار</label>
+
+        <input
+            id="amount"
+            type="number"
+            min="1"
+            step="0.01"
+            placeholder="مثلاً 1">
+
+        <button class="confirm" onclick="requestWithdraw()">
+            إرسال طلب السحب
+        </button>
+
+        <button class="close" onclick="closeWithdraw()">
+            إلغاء
+        </button>
+
+    </div>
+
+</div>
+
 
 <script>
-let balance=0;
-function earn(amount){
- balance+=amount;
- document.getElementById('balance').textContent='$'+balance.toFixed(2);
- alert('مبروك! تمت إضافة $'+amount.toFixed(2)+' كتجربة.');
+
+let balance = Number(localStorage.getItem("balance") || 0);
+
+let history =
+    JSON.parse(localStorage.getItem("history") || "[]");
+
+function save(){
+
+    localStorage.setItem(
+        "balance",
+        balance.toFixed(2)
+    );
+
+    localStorage.setItem(
+        "history",
+        JSON.stringify(history)
+    );
+
+    updateBalance();
+    showHistory();
 }
+
+function updateBalance(){
+
+    document.getElementById("balance").textContent =
+        "$" + balance.toFixed(2);
+}
+
+function completeTask(button, amount, name){
+
+    button.disabled = true;
+    button.textContent = "جاري التنفيذ...";
+
+    setTimeout(function(){
+
+        balance += amount;
+
+        history.unshift({
+            type:"ربح",
+            name:name,
+            amount:amount,
+            date:new Date().toLocaleString("ar")
+        });
+
+        save();
+
+        button.textContent =
+            "تمت المهمة ✓ +" + amount.toFixed(2) + "$";
+
+        alert(
+            "مبروك 🎉\n" +
+            "أضفنا $" +
+            amount.toFixed(2) +
+            " إلى رصيدك."
+        );
+
+    },1500);
+}
+
+function openWithdraw(){
+
+    if(balance < 1){
+
+        alert(
+            "رصيدك الحالي $" +
+            balance.toFixed(2) +
+            "\nالحد الأدنى للسحب هو $1.00"
+        );
+
+        return;
+    }
+
+    document.getElementById("withdrawModal").style.display =
+        "flex";
+
+    document.getElementById("amount").value =
+        balance.toFixed(2);
+}
+
+function closeWithdraw(){
+
+    document.getElementById("withdrawModal").style.display =
+        "none";
+}
+
+function requestWithdraw(){
+
+    let wallet =
+        document.getElementById("wallet").value.trim();
+
+    let amount =
+        Number(document.getElementById("amount").value);
+
+    if(!wallet){
+
+        alert("أدخل رقم أو معرف شام كاش.");
+        return;
+    }
+
+    if(!amount || amount <= 0){
+
+        alert("أدخل مبلغاً صحيحاً.");
+        return;
+    }
+
+    if(amount > balance){
+
+        alert("المبلغ أكبر من رصيدك.");
+        return;
+    }
+
+    if(amount < 1){
+
+        alert("الحد الأدنى للسحب هو $1.00.");
+        return;
+    }
+
+    history.unshift({
+
+        type:"سحب",
+
+        name:"شام كاش",
+
+        amount:amount,
+
+        wallet:wallet,
+
+        status:"قيد المراجعة",
+
+        date:new Date().toLocaleString("ar")
+
+    });
+
+    /*
+      لا نخصم الرصيد نهائياً هنا.
+      الطلب أصبح "قيد المراجعة".
+      عند بناء الخادم الحقيقي سنخصم الرصيد
+      بعد قبول الطلب وتنفيذ التحويل.
+    */
+
+    save();
+
+    closeWithdraw();
+
+    alert(
+        "تم إرسال طلب السحب بنجاح ✅\n\n" +
+        "الطريقة: شام كاش\n" +
+        "المبلغ: $" + amount.toFixed(2) + "\n" +
+        "الحالة: قيد المراجعة"
+    );
+}
+
+function showHistory(){
+
+    let box =
+        document.getElementById("history");
+
+    if(history.length === 0){
+
+        box.innerHTML =
+            "لا توجد عمليات حتى الآن.";
+
+        return;
+    }
+
+    box.innerHTML =
+        history.map(function(item){
+
+            if(item.type === "ربح"){
+
+                return `
+                <div class="history-item">
+                    🟢 ${item.name}
+                    <br>
+                    <b>+$${Number(item.amount).toFixed(2)}</b>
+                    <br>
+                    <small>${item.date}</small>
+                </div>
+                `;
+
+            }
+
+            return `
+            <div class="history-item">
+                🟠 طلب سحب - ${item.name}
+                <br>
+                <b>-$${Number(item.amount).toFixed(2)}</b>
+                <br>
+                الحالة: ${item.status}
+                <br>
+                <small>${item.date}</small>
+            </div>
+            `;
+
+        }).join("");
+}
+
+updateBalance();
+showHistory();
+
 </script>
+
 </body>
 </html>
